@@ -1,7 +1,7 @@
 // @ts-check
 
 const { verifyJWT } = require('./jwt')
-const getUsersCollection = require('../mongo')
+const { getUsersCollection } = require('../mongo')
 
 /** @returns {import('express').RequestHandler} */
 function authMiddleware() {

@@ -4,7 +4,7 @@ const { v4: uuidv4 } = require('uuid')
 const bcrypt = require('bcrypt')
 const { signJWT } = require('./jwt')
 
-const getUsersCollection = require('../mongo')
+const { getUsersCollection } = require('../mongo')
 
 /**
  * @param {string} userId
