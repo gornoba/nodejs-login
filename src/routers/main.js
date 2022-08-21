@@ -11,11 +11,10 @@ const {
   getAccessTokenForUserId,
 } = require('../auth/auth')
 const { signJWT } = require('../auth/jwt')
-const { APP_CONFIG_JSON } = require('../common')
+const { APP_CONFIG_JSON, HOST } = require('../common')
 const { redirectWithMsg } = require('../util')
 
 const router = express.Router()
-const HOST = 'https://6333-112-214-229-98.jp.ngrok.io'
 
 router.get('/', async (req, res) => {
   if (req.user) {
