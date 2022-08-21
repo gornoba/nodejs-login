@@ -20,7 +20,6 @@ const HOST = 'https://6333-112-214-229-98.jp.ngrok.io'
 router.get('/', async (req, res) => {
   if (req.user) {
     const postsCol = await getPostsCollection()
-
     const postsCursor = postsCol.aggregate([
       {
         $lookup: {
@@ -28,6 +27,11 @@ router.get('/', async (req, res) => {
           localField: 'userid',
           foreignField: 'id',
           as: 'users',
+        },
+      },
+      {
+        $sort: {
+          createAt: -1,
         },
       },
     ])
@@ -38,6 +42,7 @@ router.get('/', async (req, res) => {
     }))
 
     res.render('home', {
+      user: req.user,
       posts,
       APP_CONFIG_JSON,
     })
